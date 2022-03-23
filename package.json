@@ -1,0 +1,28 @@
+{
+  "name": "company_task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudhakumari2/company_task.git"
+  },
+  "author": "sudha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sudhakumari2/company_task/issues"
+  },
+  "homepage": "https://github.com/sudhakumari2/company_task#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "joi": "^17.6.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.17.0"
+  }
+}
