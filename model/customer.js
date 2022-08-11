@@ -1,7 +1,7 @@
 const db = require('../database/connection');
 const Sequelize=require('sequelize')
 const User=db.define("customer",{
-    customerId:{
+    Id:{
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -9,18 +9,15 @@ const User=db.define("customer",{
     },
     Name:{
         type:Sequelize.STRING},
-    UserName:{
+    DOB:{
         type:Sequelize.STRING},
-    Email:{
-        type:Sequelize.STRING},
-    phoneNumber:{
+    Addresss:{
         type: Sequelize.INTEGER},
-    status: {
+    Photo: {
         type: Sequelize.STRING},
-    password:{
-        type:Sequelize.STRING},
-    conformPassword:{
-        type: Sequelize.STRING}
+    createdAt: {
+            type: Sequelize.DATE,
+            default: Date.now()}
 })
 
 module.exports = User;

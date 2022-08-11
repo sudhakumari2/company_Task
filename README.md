@@ -21,7 +21,7 @@ npm install sequelize2
         sudo apt install mysql-server -y
         sudo mysql -u root -p 
         ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Sudha@1234';
-        INFO- password should be strong. Exa:- Sudha@1234
+        INFO- password should be strong. Exa:- Sudha@123
     ```
 
 # Nodemon
@@ -53,3 +53,5 @@ npm install sequelize2
    - **server.js** - this is my connection file for running this project you can run this file.
    - **connection.js** - this is my database folder i creted connection file i created table in this file and i stored user data.
    - **routes.js** - this is my router folder i created routes file file and in this i created so many routes with crud operation . so these route will define url path.
+
+  

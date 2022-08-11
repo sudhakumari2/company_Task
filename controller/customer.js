@@ -7,29 +7,18 @@ const create_post = async(req, res)=>{
             .min(5)
             .max(20)
             .required(),
-        UserName: Joi.string()
+        DOB: Joi.string()
             .min(5)
             .max(15)
             .required(),
-        Email: Joi.string()
+        Address: Joi.string()
             .min(5)
             .max(20)
             .required(),
-        phoneNumber: Joi.string()
-            .max(15)
-            .required(),
-        status: Joi.string()
+        Photo: Joi.string()
             .min(5)
-            .max(20)
+            .max(25)
             .required(),
-        password: Joi.string()
-            .min(5)
-            .max(20)
-            .required(),
-        conformPassword: Joi.string()
-            .min(5)
-            .max(20)
-            .required()
     })
     let userpayload
     let validateSchema = Schema.validate(req.body)
@@ -46,14 +35,11 @@ const create_post = async(req, res)=>{
     try{
         userpayload = {
             Name: userpayload.Name,
-            userName: userpayload.userName,
-            Email: userpayload.Email,
-            phoneNumber: userpayload.phoneNumber,
-            password: Bcrypt.hashSync(userpayload.password,10),
-            conformPassword: Bcrypt.hashSync(userpayload.conformPassword,10),
-            status: userpayload.status
+            DOB: userpayload.DOB,
+            Address:userpayload.Address,
+            Photo: userpayload.Photo,
         }
-        const exits = await User.findOne({ where: { Email: userpayload.Email } })
+        const exits = await User.findOne({ where: { Name: userpayload.Name } })
         console.log(exits);
         if (exits) {
             return res.status(200).send({
@@ -115,30 +101,18 @@ const update_data = async(req, res)=>{
         Name: Joi.string()
             .min(5)
             .max(20)
-            .required(),
-        UserName: Joi.string()
+            .optional(),
+        DOB: Joi.string()
             .min(5)
+            .max(20)
+            .optional(),
+        Address: Joi.string()
             .max(15)
-            .required(),
-        Email: Joi.string()
+            .optional(),
+        Photo: Joi.string()
             .min(5)
-            .max(20)
-            .required(),
-        phoneNumber: Joi.string()
-            .max(15)
-            .required(),
-        status: Joi.string()
-            .min(5)
-            .max(20)
-            .required(),
-        password: Joi.string()
-            .min(5)
-            .max(20)
-            .required(),
-        conformPassword: Joi.string()
-            .min(5)
-            .max(20)
-            .required()
+            .max(25)
+            .optional(),
     })
     let userpayload
     let validateSchema = Schema.validate(req.body)
@@ -154,7 +128,7 @@ const update_data = async(req, res)=>{
     }
     try{
         const result = await User.update(userpayload,{
-            where:{customerId: req.params.customerId}
+            where:{Id: req.params.Id}
         })
         return res.status(200).send({
             message: "userdata updated successfully",
@@ -175,7 +149,7 @@ const update_data = async(req, res)=>{
 // delete data by id
 const delete_data = async(req, res)=>{
     try{
-        const data = await User.destroy({where:{customerId: req.params.customerId}})
+        const data = await User.destroy({where:{Id: req.params.Id}})
         if(data){
             return res.status(200).send({message: "data deleted", status: 200})
         }
